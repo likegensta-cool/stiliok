@@ -1,0 +1,13 @@
+import telegram
+
+# Set up the bot and API token
+bot = telegram.Bot(token='YOUR_API_TOKEN_HERE')
+
+# Define the target word to search for
+target_word = 'hello'
+
+# Iterate through the chat history and find messages containing the target word
+for update in bot.get_updates():
+    message = update.message
+    if message and target_word in message.text.lower():
+        print(f"Found '{target_word}' in message from {message.from_user.username}: {message.text}")
